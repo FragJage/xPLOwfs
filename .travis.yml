@@ -30,9 +30,10 @@ addons:
 install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
   - pwd 
-  - ls
+  - vi owfs.conf
+  - vi /etc/owfs.conf
   - /etc/init.d/owserver stop
-  - /usr/bin/owserver -c owfs.conf 
+  - /usr/bin/owserver -c /home/travis/build/FragJage/xPLOwfs/owfs.conf 
 
 script:
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then cmake . -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=$(which $COMPILER); fi
