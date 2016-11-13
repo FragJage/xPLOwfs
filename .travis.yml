@@ -6,7 +6,7 @@ env:
     - COMPILER=g++-4.9
     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
     #   via the "travis encrypt" command using the project repo's public key
-    - secure: ""
+    - secure: "X5fQfaSqq7vTJDpIYit0LMHf66kQZDApxVYknDIlKDANTAauJlbE3uck/uRta2xPtOEkjyXEfcxV1pe3FiI9i/EuoYmbYsRsn1uPhK7oMVyxEP1G7DXeaSYPLkN7p3rHPMBSNQQ3TWbAU1n5lqXnkh4fBGSgs74bpKvblCgX35uOsXXUddp8Lw75UVW7fYWPURNU+Ovw5//rX16R96GsD66uHUTXz91CBixMmNLHGdizpNhc/XQPtBV8VZ38B/8pT/3kLdJ8JNTjUGgHR8pYRkadZcaToUeZ/uVW/3gvznUHU/8eioZPhU3eJgk1pKGBeG4ZzejdOb0kick1XkIOjN4Nu0afunWvHOcHFawBPSC3+upFEhj6Q/j/JlKoXaadEkNdnSwwrPbRax7B3RhFhZFhLlVxeOw7I1AvgzCXSeYgbnc0FZe9HxVnZgNvxYLscN7K6yYPiGiMDGZp6JCgAG/iJ/JPR3cXQiIssog7xKXpZt9buh/pQE6bd+duq+F9CO9uhNztSKzWK+hrLf/KiHRSXrGNi4tsIKa68xJ6BKXs2tHMWmL1MIaPl8Z8mOGbomVRdZKlfPb54c0QIFSydYcWD/JYw73voq5/ja+jBRDC/+ndQNgrAGBwsxt1F8dViDzDdhhdEwfPt3oVKapBimQ9wchA7wUmBaPHinyD0Os="
 
 sudo: required
 
@@ -29,12 +29,12 @@ addons:
     
 install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
+  - pwd 
+  - ls
+  - /etc/init.d/owserver stop
+  - /usr/bin/owserver -c owfs.conf 
 
 script:
-  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then pwd; fi 
-  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ls; fi
-  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then /etc/init.d/owserver stop; fi
-  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then /usr/bin/owserver -c owfs.conf; fi 
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then cmake . -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=$(which $COMPILER); fi
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then make; fi
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ./test/bin/unittest; fi
