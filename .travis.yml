@@ -30,8 +30,8 @@ addons:
 install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
   - pwd 
-  - vi owfs.conf
-  - vi /etc/owfs.conf
+  - cat owfs.conf
+  - cat /etc/owfs.conf
   - /etc/init.d/owserver stop
   - /usr/bin/owserver -c /home/travis/build/FragJage/xPLOwfs/owfs.conf 
 
