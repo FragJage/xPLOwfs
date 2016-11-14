@@ -29,14 +29,6 @@ addons:
     
 install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
-  - content=$(wget 127.0.0.1:2121 -q -O -)
-  - echo $content
-  - content=$(curl -L 127.0.0.1:2121)
-  - echo $content
-  - /etc/init.d/owserver stop
-  - /usr/bin/owserver -c /home/travis/build/FragJage/xPLOwfs/owfs.conf 
-  - content=$(wget 127.0.0.1:2121 -q -O -)
-  - echo $content
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
 
@@ -44,6 +36,13 @@ script:
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then cmake . -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=$(which $COMPILER); fi
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then make; fi
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ./test/bin/unittest; fi
+  - /etc/init.d/owserver stop
+  - /usr/bin/owserver -c /home/travis/build/FragJage/xPLOwfs/owfs.conf 
+  - /etc/init.d/owhttpd stop
+  - /usr/bin/owhttpd -c /home/travis/build/FragJage/xPLOwfs/owfs.conf 
+  - content=$(curl -L 127.0.0.1:2121)
+  - echo $content
+  - ./test/bin/unittest
 
 after_success:
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then valgrind --error-exitcode=1 --leak-check=full ./test/bin/unittest; fi

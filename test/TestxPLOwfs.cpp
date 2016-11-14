@@ -98,6 +98,7 @@ bool TestxPLOwfs::StdConfig()
         }
     }
 
+cout << "nbTrig = " << nbTrig << endl;
     assert(3==nbTrig);
     assert(0==nbOther);
 
