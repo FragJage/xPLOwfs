@@ -33,7 +33,7 @@ install:
   - echo $content
   - sudo /etc/init.d/owserver stop
   - sudo /etc/init.d/owhttpd stop
-  - sudo owfs.conf /etc/owfs.conf
+  - sudo cp owfs.conf /etc/owfs.conf
   - cat /etc/owfs.conf
   - sudo /etc/init.d/owserver start
   - sudo /etc/init.d/owhttpd start
