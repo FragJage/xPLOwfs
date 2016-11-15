@@ -33,8 +33,7 @@ install:
   - echo $content
   - /etc/init.d/owserver stop
   - /etc/init.d/owhttpd stop
-  - cat /etc/owfs.conf
-  - sed -r "s/^server:.*$/server:FAKE=DS18S20,DS18S20,DS2405/g" /etc/owfs.conf
+  - sed -i "s/^server:.*FAKE.*$/server:FAKE=DS18S20,DS18S20,DS2405/g" /etc/owfs.conf
   - cat /etc/owfs.conf
   - /etc/init.d/owserver start
   - /etc/init.d/owhttpd start
