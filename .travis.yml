@@ -36,7 +36,7 @@ install:
   - sudo /etc/init.d/owftpd stop
   - sudo /etc/init.d/owserver stop
   - ps -ax | grep ow
-  - sudo cp /home/travis/build/FragJage/xPLOwfs/owfs.conf /etc.owfs.conf
+  - sudo cp /home/travis/build/FragJage/xPLOwfs/owfs.conf /etc/owfs.conf
   - cat /home/travis/build/FragJage/xPLOwfs/owfs.conf
   - cat /etc/owfs.conf
   - sudo /etc/init.d/owserver start
