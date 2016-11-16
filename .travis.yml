@@ -29,21 +29,11 @@ addons:
     
 install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
-  - content=$(curl -L 127.0.0.1:2121)
-  - echo $content
-  - ps -ax | grep ow
   - sudo /etc/init.d/owhttpd stop
   - sudo /etc/init.d/owftpd stop
   - sudo /etc/init.d/owserver stop
-  - ps -ax | grep ow
   - sudo cp /home/travis/build/FragJage/xPLOwfs/owfs.conf /etc/owfs.conf
-  - cat /home/travis/build/FragJage/xPLOwfs/owfs.conf
-  - cat /etc/owfs.conf
   - sudo /etc/init.d/owserver start
-  - sudo /etc/init.d/owhttpd start
-  - ps -ax | grep ow
-  - content=$(curl -L 127.0.0.1:2121)
-  - echo $content
 
 script:
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then cmake . -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=$(which $COMPILER); fi
