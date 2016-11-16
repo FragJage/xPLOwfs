@@ -31,10 +31,15 @@ install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
+  - ps -ax | grep ow
   - sudo /etc/init.d/owserver stop
   - sudo /etc/init.d/owhttpd stop
-  - sudo /usr/bin/owserver --fake=DS18S20,DS2405,DS18S20,DS2408 --server=localhost:4304 --error_print=2 --error_level=2
-  - sudo /usr/bin/owhttpd --fake=DS18S20,DS2405,DS18S20,DS2408 --server=localhost:2121 --error_print=2 --error_level=2
+  - ps -ax | grep ow
+  - sudo cp owfs.conf /etc.owfs.conf
+  - cat /etc/owfs.conf
+  - sudo /etc/init.d/owserver start
+  - sudo /etc/init.d/owhttpd start
+  - ps -ax | grep ow
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
 
