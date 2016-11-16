@@ -32,10 +32,12 @@ install:
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
   - ps -ax | grep ow
-  - sudo /etc/init.d/owserver stop
   - sudo /etc/init.d/owhttpd stop
+  - sudo /etc/init.d/owftpd stop
+  - sudo /etc/init.d/owserver stop
   - ps -ax | grep ow
-  - sudo cp owfs.conf /etc.owfs.conf
+  - sudo cp /home/travis/build/FragJage/xPLOwfs/owfs.conf /etc.owfs.conf
+  - cat /home/travis/build/FragJage/xPLOwfs/owfs.conf
   - cat /etc/owfs.conf
   - sudo /etc/init.d/owserver start
   - sudo /etc/init.d/owhttpd start
