@@ -31,14 +31,10 @@ install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
-  - cat /etc/init.d/owserver
   - /etc/init.d/owserver stop
   - /etc/init.d/owhttpd stop
-  - sudo cp owfs.conf /etc/owfs.conf
-  - sudo chmod 777 /etc/owfs.conf
-  - cat /etc/owfs.conf
-  - /etc/init.d/owserver start
-  - /etc/init.d/owhttpd start
+  - /usr/bin/owserver -c /home/travis/build/FragJage/xPLOwfs/owfs.conf --error_print=2 --error_level=2
+  - /usr/bin/owhttpd -c /home/travis/build/FragJage/xPLOwfs/owfs.conf --error_print=2 --error_level=2
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
 
