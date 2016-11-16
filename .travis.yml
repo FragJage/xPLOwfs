@@ -31,8 +31,8 @@ install:
   - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
-  - /etc/init.d/owserver stop
-  - /etc/init.d/owhttpd stop
+  - sudo /etc/init.d/owserver stop
+  - sudo /etc/init.d/owhttpd stop
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
   - /usr/bin/owserver --fake=DS18S20,DS2405,DS18S20,DS2408 --server=localhost:4304 --error_print=2 --error_level=2
