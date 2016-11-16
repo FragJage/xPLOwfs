@@ -33,8 +33,8 @@ install:
   - echo $content
   - /etc/init.d/owserver stop
   - /etc/init.d/owhttpd stop
-  - /usr/bin/owserver -c /home/travis/build/FragJage/xPLOwfs/owfs.conf --error_print=2 --error_level=2
-  - /usr/bin/owhttpd -c /home/travis/build/FragJage/xPLOwfs/owfs.conf --error_print=2 --error_level=2
+  - /usr/bin/owserver --configuration=/home/travis/build/FragJage/xPLOwfs/owfs.conf --error_print=2 --error_level=2
+  - /usr/bin/owhttpd --configuration=/home/travis/build/FragJage/xPLOwfs/owfs.conf --error_print=2 --error_level=2
   - content=$(curl -L 127.0.0.1:2121)
   - echo $content
 
