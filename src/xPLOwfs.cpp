@@ -414,7 +414,6 @@ void xPLOwfs::Refresh()
 
 
     if(!m_bConfigured) return;
-
 	if(timeNow-lastRefreshDevices>=m_RefreshDevicesInterval)
     {
         lastRefreshDevices=timeNow;

@@ -117,17 +117,17 @@ bool TestxPLOwfs::CoverageStdConfig()
     schCfg.SetValue("temperaturescale", "F");
     schCfg.SetValue("pressurescale", "ATM");
     schCfg.SetValue("uncachedread", "1");
-    schCfg.SetValue("devicesinterval", 1);
-    schCfg.SetValue("valuesinterval", 1);
+    schCfg.SetValue("devicesinterval", "1");
     msg = schCfg.ToMessage("fragxpl-test.default", "fragxpl-owfs.test");
     SockUdpMock::SetNextRecv(msg);
     msg = SockUdpMock::GetLastSend(10);
-    Plateforms::delay(500);
+    Plateforms::delay(600);
 
     schCfg.SetValue("newconf", "test");
     schCfg.SetValue("temperaturescale", "K");
     schCfg.SetValue("pressurescale", "MMHG");
     schCfg.SetValue("uncachedread", "0");
+    schCfg.SetValue("valuesinterval", "1");
     msg = schCfg.ToMessage("fragxpl-test.default", "fragxpl-owfs.test");
     SockUdpMock::SetNextRecv(msg);
     msg = SockUdpMock::GetLastSend(10);
@@ -149,20 +149,19 @@ bool TestxPLOwfs::CoverageStdConfig()
     schCfg.SetValue("pressurescale", "PA");
     msg = schCfg.ToMessage("fragxpl-test.default", "fragxpl-owfs.test");
     SockUdpMock::SetNextRecv(msg);
-    Plateforms::delay(500);
+
+    Plateforms::delay(600);
+    schCfg.SetValue("newconf", "test");
+    schCfg.SetValue("devicesinterval", 90);
+    schCfg.SetValue("valuesinterval", 30);
+    msg = schCfg.ToMessage("fragxpl-test.default", "fragxpl-owfs.test");
+    SockUdpMock::SetNextRecv(msg);
 
     while(true)
     {
         msg = SockUdpMock::GetLastSend(10);
         if(msg=="") break;
     }
-
-    Plateforms::delay(100);
-    schCfg.SetValue("newconf", "test");
-    schCfg.SetValue("devicesinterval", 90);
-    schCfg.SetValue("valuesinterval", 30);
-    msg = schCfg.ToMessage("fragxpl-test.default", "fragxpl-owfs.test");
-    SockUdpMock::SetNextRecv(msg);
 
     return true;
 }
