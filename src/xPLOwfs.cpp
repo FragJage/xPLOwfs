@@ -387,9 +387,6 @@ void xPLOwfs::OwDeviceAdd(const string& name)
 		case 0x3A : 	//DS2413
 		    OwDeviceAdd(name, name+"/PIO.A", xPL::SchemaSensorTypeUtility::output, 0);
 			break;
-		case 0x3B : 	//DS18B25
-		    OwDeviceAdd(name, name+"/temperature9", xPL::SchemaSensorTypeUtility::temp, 1);
-			break;
     }
     LOG_VERBOSE(m_Log) << "Device found " << name;
 }

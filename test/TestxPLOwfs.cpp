@@ -97,7 +97,7 @@ bool TestxPLOwfs::StdConfig()
         }
     }
 
-    assert(13==nbTrig);
+    assert(12==nbTrig);
     assert(0==nbOther);
 
     return true;
