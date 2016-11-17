@@ -21,6 +21,7 @@ public:
     static void ThreadStart(xPLOwfs* pxPLDev);
     bool Start();
     bool StdConfig();
+    bool CoverageStdConfig();
     bool SetAdvConfig();
     bool GetAdvConfig();
     bool ModifyAdvConfig();

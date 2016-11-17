@@ -23,10 +23,16 @@ bool TestowDevice::TestDisplayName()
 
 bool TestowDevice::TestRound()
 {
+    owDevice myOw("MyDisplayName", "", 2);
+    assert(2==myOw.GetRound());
     return true;
 }
 
 bool TestowDevice::TestValue()
 {
+    owDevice myOw("MyDisplayName", "", 2, "5");
+    assert("5"==myOw.GetValue());
+    myOw.SetValue("ZZ");
+    assert("ZZ"==myOw.GetValue());
     return true;
 }
