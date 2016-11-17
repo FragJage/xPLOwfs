@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/FragJage/xPLOwfs.svg?branch=master)](https://travis-ci.org/FragJage/xPLOwfs)
-[![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLOwfs/badge.svg?branch=master)](https://coveralls.io/github/FragJage/xPLOwfs?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLOwfs/badge.svg?branch=master&bust=1)](https://coveralls.io/github/FragJage/xPLOwfs?branch=master)
 [![Coverity Scan Build](https://scan.coverity.com/projects/10801/badge.svg)](https://scan.coverity.com/projects/10801)
 xPLOwfs
 =========
