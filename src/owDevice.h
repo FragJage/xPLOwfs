@@ -11,6 +11,12 @@ class owDevice
         owDevice(const std::string& displayName, const std::string& deviceName, int round, const std::string& current);
         ~owDevice();
 
+        void swap(owDevice& other);
+        owDevice(owDevice const& other);
+        owDevice& operator=(owDevice const& other);
+        owDevice(owDevice &&other);
+        owDevice& operator=(owDevice&& other) noexcept;
+
         std::string GetDisplayName();
         int GetRound();
         std::string GetValue();
