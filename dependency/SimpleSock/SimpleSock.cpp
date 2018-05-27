@@ -85,6 +85,13 @@ void SimpleSock::Open(int port, unsigned long ipAddress)
 	m_sockAddress.sin_port=htons(port);
     m_sockAddress.sin_addr.s_addr=ipAddress;
     m_isOpen = true;
+
+    if(m_sockType==SOCK_DGRAM)
+    {
+        int arg = 1;
+	if(setsockopt(m_sockHandle, SOL_SOCKET, SO_BROADCAST, (char*)&arg, sizeof(int))!=0)
+                throw SimpleSock::Exception(0x0021, "SimpleSock::Open: setsockopt(SO_BROADCAST) error", GetSocketError());
+    }
 }
 
 void SimpleSock::Open(int port, const string& ipAddress)

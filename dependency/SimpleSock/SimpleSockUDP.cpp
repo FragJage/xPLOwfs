@@ -38,7 +38,7 @@ void SimpleSockUDP::SetNetworkInterface(const string& networkInterface)
 void SimpleSockUDP::Open(int port)
 {
     SimpleSock::Open(port, BroadcastAddress(m_networkInterface));
-    //Open(port, INADDR_BROADCAST); //-> Erreur sur le sendto
+    //SimpleSock::Open(port, INADDR_BROADCAST); //-> Erreur sur le sendto
 }
 
 void SimpleSockUDP::Listen(int port)
