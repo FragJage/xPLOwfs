@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdlib>
 #include <iomanip>
 #include <algorithm>
@@ -352,7 +353,24 @@ void xPLOwfs::OwDeviceAdd(const string& displayName, const string& configName, x
 
 void xPLOwfs::OwDeviceAdd(const string& name)
 {
-    switch(strtol(name.substr(0,2).c_str(), nullptr, 16))
+	string svalue;
+	int family;
+
+
+	try
+	{
+		svalue = m_OwfsClient.Get(name + "/family");
+	}
+	catch (const exception& e)
+	{
+		LOG_WARNING(m_Log) << "Unable to read family of device " << name << " : " << e.what();
+		return;
+	}
+
+	istringstream iss(svalue);
+    iss >> hex >> family;
+
+    switch(family)
     {
 		case 0x05 : 	//DS2405
 		    OwDeviceAdd(name, name+"/PIO", xPL::SchemaSensorTypeUtility::output, 0);
@@ -433,6 +451,8 @@ int xPLOwfs::ServiceStart(int argc, char* argv[])
 {
     m_bServiceStop = false;
     if(argc > 1) m_xPLDevice.SetConfigFileName(argv[1]);
+    m_xPLDevice.LoadConfig();
+    m_xPLDevice.SetLogLevel(5);
     m_xPLDevice.Open();
 
     while(!m_bServiceStop)
