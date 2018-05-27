@@ -57,13 +57,13 @@ void xPLDevCfg::Init()
     AddExtension(&m_BasicConfig);
     AddBasicConfig("newconf", ConfigItem::Reconf, GetInstance());
     AddBasicConfig("interval", ConfigItem::Reconf, "5");
-    #ifdef DEBUG
+    //#ifdef DEBUG
     AddBasicConfig("logdestination", ConfigItem::Reconf, "cout");
     AddBasicConfig("loglevel", ConfigItem::Reconf, "5");
-    #else
-    AddBasicConfig("logdestination", ConfigItem::Reconf, "cerr");
-    AddBasicConfig("loglevel", ConfigItem::Reconf, "2");
-    #endif // DEBUG
+    //#else
+    //AddBasicConfig("logdestination", ConfigItem::Reconf, "cerr");
+    //AddBasicConfig("loglevel", ConfigItem::Reconf, "2");
+    //#endif // DEBUG
     AddBasicConfig("logmodule", ConfigItem::Option, "");
     AddBasicConfig("logfunction", ConfigItem::Option, "");
     AddBasicConfig("group", ConfigItem::Option, 16);
