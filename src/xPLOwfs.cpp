@@ -359,7 +359,7 @@ void xPLOwfs::OwDeviceAdd(const string& name)
 
 	try
 	{
-		svalue = m_OwfsClient.Get(name + "/family");
+		svalue = m_owfsClient.Get(name + "/family");
 	}
 	catch (const exception& e)
 	{
@@ -450,9 +450,8 @@ void xPLOwfs::Refresh()
 int xPLOwfs::ServiceStart(int argc, char* argv[])
 {
     m_bServiceStop = false;
-    if(argc > 1) m_xPLDevice.SetConfigFileName(argv[1]);
+    if((argc > 1)&&(argv[1][0]!='-')) m_xPLDevice.SetConfigFileName(argv[1]);
     m_xPLDevice.LoadConfig();
-    m_xPLDevice.SetLogLevel(5);
     m_xPLDevice.Open();
 
     while(!m_bServiceStop)
