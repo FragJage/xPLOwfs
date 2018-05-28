@@ -28,7 +28,7 @@ using namespace std;
 /*** Class owfscpp                                                                               ***/
 /***                                                                                             ***/
 /***************************************************************************************************/
-owfscpp::owfscpp(string server, unsigned port) : m_OwfsServer(server), m_OwfsPort(port), m_Timeout(5000), m_Version(0), m_ControlFlags(0x00000100), m_Persistence(false), m_PersistenceMode(PERSISTENCE_CLOSE), m_OwfsSock()
+owfscpp::owfscpp(string server, unsigned port) : m_OwfsServer(server), m_OwfsPort(port), m_Timeout(5000000), m_Version(0), m_ControlFlags(0x00000100), m_Persistence(false), m_PersistenceMode(PERSISTENCE_CLOSE), m_OwfsSock()
 {
 }
 
